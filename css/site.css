@@ -22,11 +22,11 @@ body {
 }
 
 nav {
-    background-color: var(--dark-color);
+    background-color: var(--primary-color);
 }
 
 footer {
-    background-color: var(--dark-color);
+    background-color: var(--primary-color);
 }
 
 h1,
@@ -79,4 +79,16 @@ pre[class*="language-"] {
     white-space: pre-wrap;
     word-break: break-all;
     word-wrap: break-word;
+}
+.Fizz{
+    color: darkgreen;
+    font-weight: bold;
+}
+.Buzz{
+    color: darkblue;
+    font-weight: bold;
+}
+.FizzBuzz{
+    color: red;
+    font-weight: bold;
 }

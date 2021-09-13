@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Even Speedin': A Coding Project By Ron Aviles</title>
+    <title>Fizz Buzz: A Coding Project By Ron Aviles</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,7 +43,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/RonAviles/fizzBuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -55,14 +55,128 @@
     <!--main section-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Fizz Buzz.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call hello world
-                            function HelloWorld(){
-                            alert("hello world");
+                            function getValues() {
+                                //clear the table contents
+                                document.getElementById("resultsTable").classList.add("invisible");
+                                document.getElementById("tbodyResults").innerHTML = "";
+                                //get fizz and buzz values
+                                let fizz = document.getElementById("fizzVal").value;
+                                let buzz = document.getElementById("buzzVal").value;
+                                //parse the values to validate that they are integers
+                                let fizzInt = parseInt(fizz);
+                                let buzzInt = parseInt(buzz);
+                                if (isNaN(fizzInt) && isNaN(buzzInt)) {
+                                    alert("You must enter an integer!");
+                                } else {
+                                    //create an array of all values 1 - 100 and replace values where appropriate
+                                    let arrOfVals = numbersC(fizzInt, buzzInt);
+                                    //displate values in a table
+                                    displayNumbers(arrOfVals);
+                                }
+                            }
+                            
+                            function numbers(f, b) {
+                                //initialize an array 
+                                let arr = []
+                                //write a loop from 1 - 190==00 
+                                for (let i = 1; i <= 100; i++) {
+                                    if (i % f == 0 && i % b == 0) {
+                                        //check if iteration is divisible by fizz and buzz values if so then push appropraite value into array 
+                                        arr.push("FizzBuzz");
+                                    } else if (i % b == 0) {
+                                        arr.push("Buzz");
+                                        //check if iteration is divisible by buzz value
+                                    } else if (i % f == 0) {
+                                        arr.push("Fizz");
+                                        //check if iteration is divisible by fizz value
+                                    } else {
+                                        arr.push(i);
+                                        //if neither then push iteration number into array 
+                                    }
+                            
+                                }
+                                return arr
+                            }
+                            
+                            //version B using booleans in a switch case model
+                            function numbersB(f, b) {
+                                let returnArr = [];
+                                let fizz = false;
+                                let buzz = false;
+                            
+                                for (let i = 1; i < 100; i++) {
+                                    fizz = i % f == 0;
+                                    buzz = i % b == 0;
+                            
+                                    switch(true){
+                                        case fizz && buzz:{
+                                            returnArr.push("FizzBuzz");
+                                            break;
+                                        }
+                                        case fizz:{
+                                            returnArr.push("Fizz");
+                                            break;
+                                        }
+                                        case buzz:{
+                                            returnArr.push("Buzz");
+                                            break;
+                                        }
+                                        default:{
+                                            returnArr.push(i);
+                                            break;
+                                        }
+                                    }
+                                }
+                            
+                                return returnArr;
+                            }
+                            
+                            //version C using ternary operators
+                            function numbersC(f, b) {
+                                let returnArr = [];
+                            
+                                for (let i = 1; i <= 100; i++) {
+                                    let value = ((i % f == 0 ? "Fizz" : "")+(i % b == 0 ? "Buzz" : "") || i);
+                                    returnArr.push(value);      
+                                }
+                            
+                                return returnArr;
+                            }
+                            
+                            function displayNumbers(arr) {
+                                //get the table body from the page
+                                let tableBody = document.getElementById("tbodyResults");
+                                //get the template 
+                                let templateRow = document.getElementById("fbTemplate");
+                                //create a loop to iterate through the new array
+                                for (let i = 0; i < arr.length; i+=5) {
+                                    let tableRow = document.importNode(templateRow.content, true);
+                                    //grab just the td and put into array
+                                    let rowCols = tableRow.querySelectorAll("td");
+                                    rowCols[0].classList.add(arr[i]);
+                                    rowCols[0].textContent = arr[i];
+                            
+                                    rowCols[1].classList.add(arr[i+1]);
+                                    rowCols[1].textContent = arr[i+1];
+                            
+                                    rowCols[2].classList.add(arr[i+2]);
+                                    rowCols[2].textContent = arr[i+2];
+                            
+                                    rowCols[3].classList.add(arr[i+3]);
+                                    rowCols[3].textContent = arr[i+3];
+                            
+                                    rowCols[4].classList.add(arr[i+4]);
+                                    rowCols[4].textContent = arr[i+4];
+                            
+                                    tableBody.appendChild(tableRow);
+                                }
+                                //make table visible
+                                document.getElementById("resultsTable").classList.remove("invisible");
                             }
                         </code>
                     </pre>
@@ -70,15 +184,19 @@
                 <div class="col-lg-4">
                     <h4 class="border-bottom mb-3">Code explanation below.</h4>
                     <h5>getValues()</h5>
-                    <p>The code is broken into separate functions to divide the necessary steps before bringing them back together to display the result onto the page.</p>
-                    <p>The getValues( ) function starts and ends the entire process. Starting by identifying what the user-entered start and end values are, converting them to integers and then validating the data before passing it on to the next step.</p>
+                    <p>This functions gets the values from the input and validates the data to make sure they are integers. It then calls the logic function and display function.</p>
 
-                    <h5>generateNumbers()</h5>                    
-                    <p>The generateNumbers( ) function creates an array with every number integer from the start value to the end value (inclusive) and then passes it to the final step.</p>
+                    <h5>numbers(),</h5>  
+                    <h5>numbersB(),</h5>
+                    <h5>numbersC()</h5>                  
+                    <p>These are three versions of the logic function. The first version uses an if else statement nested in a for loop to iterate through the numbers and push the appropirate values into an array that is then passed on to the display function later on. </p>
+
+                    <p> Version B uses booleans and a switch case nested in a for loop to pass the approprate values into an array that will be passed to the display function.</p>
+
+                    <p>Version C uses a ternary operator nested in a for loop to assign the values to an array that is passed on to the display function.</p>
 
                     <h5>displayNumbers()</h5>
-                    <p>The displayNumbers( ) function iterates through the array that is passed in. On each iteration it assigns a "class" variable either an even or odd value depending on if the current value in the array that is being accessed is even or odd.</p>
-                    <p>Then it injects the currently accessed number and its corresponding class into the table to be displayed. From here we access the injected class in CSS to change the font-weight to bold for every even value.</p>
+                    <p>This is the display function that uses a query selector nested in a for loop to modify and then import a template into the inner html of the table element. This creates a 5 column table holding the data from the array that was originally passed in. A class is also passed into each table data element so that it can be targetted by a CSS selector that allows us to style the Fizz, Buzz and FizzBuzz values differently.</p>
                     
                 </div>
             </div>
@@ -89,7 +207,7 @@
         <div class="container-fluid">
             <div class="row gy-2">
                 <div class="col-12 col-lg-4 order-last order-lg-first  text-light">
-                    <div><span class="text-muted">&copy;2021</span> Ron Aviles | Ronald.n.aviles@gmail.com</div>
+                    <div>&copy;2021 Ron Aviles | Ronald.n.aviles@gmail.com</div>
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center justify-content-start justify-content-lg-center">
                     <img src="/img/Long_Logo-removebg-preview (1).png" alt="Ron Aviles Logo" height="30">

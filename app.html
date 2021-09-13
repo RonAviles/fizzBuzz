@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Even Speedin': A Coding Project By Ron Aviles</title>
+    <title>Fizz Buzz: A Coding Project By Ron Aviles</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/index.html"><img src="img/mark.png"
-                    class="border border-2 d-inline-block align-text-top" width="30" height="30"> APP NAME</a>
+                    class="border border-2 d-inline-block align-text-top" width="30" height="30"> FIZZ BUZZ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link"  href="/index.html">Home</a>
+                        <a class="nav-link" href="/index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/app.html">The App</a>
@@ -42,7 +42,7 @@
                         <a class="nav-link" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/RonAviles/fizzBuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -56,19 +56,46 @@
         <div class="container mt-4">
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-4 col border-end border-2">
-                    <h1><span class="racefont">EVEN SPEEDIN':</span> A Coding Project</h1>
+                    <h1><span class="racefont">FIZZ BUZZ:</span> A Coding Project</h1>
                     <h4 class="lead">
-                        Speed through even numbers one loop at a time. A javascript coding exercise using
-                        loops. Write a program that displays the numbers 0 to 100. Display the even numbers in
-                        <strong>BOLD.</strong>
+                        When it counts you Fizz Buzz. A javascript coding exercise using loops. Write a program that
+                        prints the numbers from 1 to 100 and for mltiples of '3' display <strong>"Fizz"</strong> instead
+                        of the number and for the multiples of '5' display <strong>"Buzz".</strong> If a multiple of
+                        both display <strong>"FizzBuzz".</strong>
                     </h4>
                     <h2 class="mt-5 border-bottom border-2">Instructions</h2>
-                    <p>Enter a starting value and an ending value. Press the button and the values will appear.</p>
+                    <p class="fw-bold">Enter a fizz and a buzz value. Press the button and the values will appear.</p>
                 </div>
                 <div class="col-lg-8">
-                    
+                    <form>
+                        <h4 class="border-bottom">Enter Values</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fizzVal" class="form-label fw-bold">Fizz </label>
+                                <input type="number" min=1 max=100 id="fizzVal" class="form-control" aria-label="Fizz value" value=3>
+                            </div>
+                            <div class="col-6">
+                                <label for="buzzVal" class="form-label fw-bold">Buzz </label>
+                                <input type="number" min=1 max=100 id="buzzVal" class="form-control" aria-label="Buzz value" value=5>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="button" class="btn mt-2 btn-dark " aria-label="Buzz it button" id="btn">Buzz It</button>
+                            </div>
+                    </form>
+                    <div class="col">
+                        <h2 class="border-bottom mt-5">Results</h2>
+                    </div>
+                    <div clas="col">
+                        <table class="table table-striped invisible table-sm" id="resultsTable">
+                            <tbody id="tbodyResults">
+
+                            </tbody>                            
+                        </table>
+                    </div>
+
                 </div>
             </div>
+        </div>
         </div>
     </main>
     <!--footer section-->
@@ -76,29 +103,45 @@
         <div class="container-fluid">
             <div class="row gy-2">
                 <div class="col-12 col-lg-4 order-last order-lg-first  text-light">
-                    <div><span class="text-muted">&copy;2021</span> Ron Aviles | Ronald.n.aviles@gmail.com</div>
+                    <div>&copy;2021 Ron Aviles | Ronald.n.aviles@gmail.com</div>
                 </div>
                 <div class="col-12 col-lg-4 d-flex align-items-center justify-content-start justify-content-lg-center">
                     <img src="/img/Long_Logo-removebg-preview (1).png" alt="Ron Aviles Logo" height="30">
                 </div>"
                 <div class="col-12 col-lg d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="https://www.linkedin.com/in/ron-aviles/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a href="https://www.linkedin.com/in/ron-aviles/" target="_blank"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="https://github.com/RonAviles" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        <div class="col social"><a href="https://github.com/RonAviles" target="_blank"><i
+                                    class="fab fa-github fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="https://twitter.com/RonAviles_" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                        <div class="col social"><a href="https://twitter.com/RonAviles_" target="_blank"><i
+                                    class="fab fa-twitter fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
     </script>
     <script src="js/site.js"></script>
+    <script>
+        document.getElementById("btn").addEventListener("click", getValues);
+    </script>
 </body>
 
 </html>
